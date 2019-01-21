@@ -13,11 +13,11 @@ export class ProductListComponent implements OnInit {
     products: ProductModel[];
 
     constructor(
-        private poductsService: ProductsService,
+        private productsService: ProductsService,
         private cartService: CartService) { }
 
     ngOnInit() {
-        this.products = this.poductsService.getAll();
+        this.products = this.productsService.getAll();
     }
 
     onBuy(product: ProductModel) {

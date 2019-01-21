@@ -1,3 +1,1 @@
-<ng-container *ngFor="let product of products">
-  <app-product [product]="product" (buy)="onBuy(product)"></app-product>
-</ng-container>
+<app-product *ngFor="let product of products" [product]="product" (buy)="onBuy(product)"></app-product>
