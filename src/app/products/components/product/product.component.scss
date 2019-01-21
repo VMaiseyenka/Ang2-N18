@@ -1,0 +1,41 @@
+.product {
+    margin: 8px;
+    width: 450px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 16px;
+
+    &__name {
+        color: black;
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    &__description {
+        font-style: italic;
+        color: gray;
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    &__price {
+        font-size: 18px;
+        display: inline-block;
+
+        &-value {
+            color: #B12704;
+        }
+    }
+
+    &__btn {
+        float: right;
+        width: 75px;
+        padding: 4px;
+        box-sizing: border-box;
+        color: #ffffff;
+        background-color:rgb(124, 124, 219);
+        border: 1px solid rgb(65, 65, 182);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+}

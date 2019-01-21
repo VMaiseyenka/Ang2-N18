@@ -1,0 +1,15 @@
+<div class="cart">
+  <ng-container *ngIf="isEmpty; then empty; else filled"></ng-container>
+  <ng-template #empty>
+    Cart is empty</ng-template>
+  <ng-template #filled>
+    <div class="cart__details">
+      <div class="cart__product" *ngFor="let item of cartItems">
+        <span class="product__name">{{item.product.name}}</span> {{item.count}} x <span class="product__price">{{item.product.price| currency}}</span> <button class="product__del" (click)="delProduct(item.product.id)">-</button>
+      </div>
+      <div class="cart__footer">
+        Cart total: <span class="cart__total">{{total| currency}}</span> 
+      </div>
+    </div>
+  </ng-template>
+</div>
