@@ -25,16 +25,24 @@ export class CartService {
     } else {
       this.products.push(new CartProductModel(product));
     }
+    product.quantity--;
   }
 
   delete(productId: string) {
     const currentIndex = this.products.findIndex(p => p.product.id === productId);
     if (currentIndex > -1) {
       this.products[currentIndex].count--;
+      this.products[currentIndex].product.quantity++;
     }
 
     if (this.products[currentIndex].count === 0) {
       this.products.splice(currentIndex, 1);
     }
+  }
+
+  getTotal(): number {
+    let total = 0;
+    this.products.forEach(i => total += i.product.price * i.count);
+    return total;
   }
 }

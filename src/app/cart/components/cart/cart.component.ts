@@ -27,12 +27,10 @@ export class CartComponent implements OnInit {
     }
 
     get total(): number {
-        let total = 0;
-        this.cartItems.forEach(i => total += i.product.price * i.count);
-        return total;
+        return this.cartService.getTotal();
     }
 
-    delProduct(productId: string) {
+    deleteProduct(productId: string) {
         this.cartService.delete(productId);
     }
 

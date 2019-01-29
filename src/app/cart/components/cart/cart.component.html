@@ -4,9 +4,7 @@
     Cart is empty</ng-template>
   <ng-template #filled>
     <div class="cart__details">
-      <div class="cart__product" *ngFor="let item of cartItems">
-        <span class="product__name">{{item.product.name}}</span> {{item.count}} x <span class="product__price">{{item.product.price| currency}}</span> <button class="product__del" (click)="delProduct(item.product.id)">-</button>
-      </div>
+      <app-cart-item *ngFor="let item of cartItems" [item]="item" (delete)="deleteProduct($event)"></app-cart-item>
       <div class="cart__footer">
         Cart total: <span class="cart__total">{{total| currency}}</span> 
       </div>

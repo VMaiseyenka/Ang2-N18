@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
         private cartService: CartService) { }
 
     ngOnInit() {
-        this.products = this.productsService.getAll();
+        this.products = this.productsService.getProducts();
     }
 
     onBuy(product: ProductModel) {

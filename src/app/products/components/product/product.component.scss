@@ -5,6 +5,10 @@
     border-radius: 4px;
     padding: 16px;
 
+    &--disabled {
+        opacity: 0.5;
+    }
+
     &__name {
         color: black;
         font-size: 24px;

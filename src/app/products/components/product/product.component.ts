@@ -14,8 +14,11 @@ export class ProductComponent {
 
   constructor() { }
 
+  get isAvailable(): boolean {
+    return this.product.quantity > 0;
+  }
+
   onBuy() {
-    console.log(`Buy product - ${this.product.name}`);
     this.buy.emit();
   }
 }
