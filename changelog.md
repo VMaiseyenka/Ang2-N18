@@ -1,5 +1,20 @@
-<a name="1.0.0"></a>
-## 2.0.0 (2019-01-29)
+<a name="1.3.0"></a>
+
+## 1.3.0 (2019-02-04)
+
+### Added
+ CoreModule
+ - LocalStorageService
+ - GeneratorService
+ - ConstantsService
+ - ConfigOptionsService
+
+ SharedModule
+ - HostClickDirective
+
+ - ContactUsComponent
+
+## 1.2.0 (2019-01-29)
 
 ### Added
  - CartItemComponent
@@ -9,7 +24,7 @@
  - HighlightDirective
  - Setting application title
  
-## 1.0.0 (2019-01-21)
+## 1.1.0 (2019-01-21)
 
 ### Added
  - ProductComponent

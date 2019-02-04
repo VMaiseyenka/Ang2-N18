@@ -40,9 +40,19 @@ export class CartService {
     }
   }
 
-  getTotal(): number {
-    let total = 0;
-    this.products.forEach(i => total += i.product.price * i.count);
-    return total;
+  clear() {
+    this.products = [];
+  }
+
+  getTotalPrice(): number {
+    let totalPrice = 0;
+    this.products.forEach(i => totalPrice += i.product.price * i.count);
+    return totalPrice;
+  }
+
+  getTotalAmount(): number {
+    let totalAmount = 0;
+    this.products.forEach(i => totalAmount += i.count);
+    return totalAmount;
   }
 }
