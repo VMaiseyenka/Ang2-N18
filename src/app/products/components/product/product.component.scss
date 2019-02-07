@@ -12,6 +12,12 @@
     &__name {
         color: black;
         font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    &__category {
+        color: black;
+        font-weight: bold;
         margin-bottom: 16px;
     }
 
@@ -19,6 +25,11 @@
         font-style: italic;
         color: gray;
         font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    &__quantity {
+        display: block;
         margin-bottom: 16px;
     }
 

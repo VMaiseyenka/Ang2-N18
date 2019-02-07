@@ -1,1 +1,12 @@
-<app-product *ngFor="let product of products" [product]="product" (buy)="onBuy(product)"></app-product>
+<div class="sorting">
+    <form [formGroup]="form">
+        Sort products by
+        <select formControlName="order">
+            <option [ngValue]="order" *ngFor="let order of orders">{{order.name}}</option>
+        </select>
+    </form>
+</div>
+
+<app-product *ngFor="let product of (products$ | async | orderBy:sortOrder)" [product]="product"
+    (buy)="onBuy(product)">
+</app-product>
