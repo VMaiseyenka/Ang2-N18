@@ -20,6 +20,7 @@ export const CONFIG = new InjectionToken<ConfigOptionsService>('config');
   ],
   providers: [
     LocalStorageService,
+    GeneratorService,
     { provide: ConstantsService, useValue: constantsService },
     { provide: CONFIG, useClass: ConfigOptionsService },
     { provide: GENERATOR, useFactory: GeneratorFactory(8), deps: [GeneratorService] },

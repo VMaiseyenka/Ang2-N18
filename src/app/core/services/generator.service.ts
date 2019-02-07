@@ -26,10 +26,10 @@ export class GeneratorService {
       { start: 97, end: 122 } // a-z
     ];
 
-    const chars = [];
+    this.chars = [];
     codes.forEach(pair => {
       for (let i = pair.start; i < pair.end; i++) {
-        chars.push(String.fromCharCode(i));
+        this.chars.push(String.fromCharCode(i));
       }
     });
   }

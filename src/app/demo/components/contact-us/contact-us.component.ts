@@ -16,7 +16,9 @@ export class ContactUsComponent implements OnInit {
     @Inject(GENERATOR) private generator: any[],
     private localStorageService: LocalStorageService,
     @Optional() private constantsService: ConstantsService
-  ) { }
+  ) {
+      console.log(this.generator);
+  }
 
   ngOnInit() {
   }
