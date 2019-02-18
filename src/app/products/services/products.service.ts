@@ -35,4 +35,18 @@ export class ProductsService {
             resolve(this.products);
         });
     }
+
+    increaseProduct(productId: string) {
+        const currentIndex = this.products.findIndex(p => p.id === productId);
+        if (currentIndex > -1) {
+            this.products[currentIndex].quantity++;
+        }
+    }
+
+    decreaseProduct(productId: string) {
+        const currentIndex = this.products.findIndex(p => p.id === productId);
+        if (currentIndex > -1) {
+            this.products[currentIndex].quantity--;
+        }
+    }
 }

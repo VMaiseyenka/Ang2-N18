@@ -2,57 +2,62 @@ import { Injectable } from '@angular/core';
 
 import { CartProductModel } from '../models';
 import { ProductModel } from '../../products/models';
+import { ProductsService } from 'src/app/products/services';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CartService {
 
-  private products: CartProductModel[];
+    private cartProducts: CartProductModel[];
 
-  constructor() {
-    this.products = [];
-  }
-
-  getCartProducts(): CartProductModel[] {
-    return this.products;
-  }
-
-  buy(product: ProductModel) {
-    const current = this.products.find(p => p.product.id === product.id);
-    if (current) {
-      current.count++;
-    } else {
-      this.products.push(new CartProductModel(product));
-    }
-    product.quantity--;
-  }
-
-  delete(productId: string) {
-    const currentIndex = this.products.findIndex(p => p.product.id === productId);
-    if (currentIndex > -1) {
-      this.products[currentIndex].count--;
-      this.products[currentIndex].product.quantity++;
+    constructor(private productsService: ProductsService) {
+        this.cartProducts = [];
     }
 
-    if (this.products[currentIndex].count === 0) {
-      this.products.splice(currentIndex, 1);
+    getCartProducts(): CartProductModel[] {
+        return this.cartProducts;
     }
-  }
 
-  clear() {
-    this.products = [];
-  }
+    isEmptyCart(): boolean {
+        return !this.cartProducts || !this.cartProducts.length;
+    }
 
-  getTotalPrice(): number {
-    let totalPrice = 0;
-    this.products.forEach(i => totalPrice += i.product.price * i.count);
-    return totalPrice;
-  }
+    buy(product: ProductModel) {
+        const current = this.cartProducts.find(p => p.product.id === product.id);
+        if (current) {
+            current.count++;
+        } else {
+            this.cartProducts.push(new CartProductModel(product));
+        }
+        this.productsService.decreaseProduct(product.id);
+    }
 
-  getTotalAmount(): number {
-    let totalAmount = 0;
-    this.products.forEach(i => totalAmount += i.count);
-    return totalAmount;
-  }
+    delete(productId: string) {
+        const currentIndex = this.cartProducts.findIndex(p => p.product.id === productId);
+        if (currentIndex > -1) {
+            this.cartProducts[currentIndex].count--;
+            this.productsService.increaseProduct(productId);
+        }
+
+        if (this.cartProducts[currentIndex].count === 0) {
+            this.cartProducts.splice(currentIndex, 1);
+        }
+    }
+
+    clear() {
+        this.cartProducts = [];
+    }
+
+    getTotalPrice(): number {
+        let totalPrice = 0;
+        this.cartProducts.forEach(i => totalPrice += i.product.price * i.count);
+        return totalPrice;
+    }
+
+    getTotalAmount(): number {
+        let totalAmount = 0;
+        this.cartProducts.forEach(i => totalAmount += i.count);
+        return totalAmount;
+    }
 }

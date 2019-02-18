@@ -19,11 +19,7 @@ export class CartComponent implements OnInit {
     }
 
     get isEmpty(): boolean {
-        return !this.cartItems || !this.cartItems.length;
-    }
-
-    get itemsCount(): number {
-        return this.cartItems.length;
+        return this.cartService.isEmptyCart();
     }
 
     get total(): number {
