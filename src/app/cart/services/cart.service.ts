@@ -30,14 +30,12 @@ export class CartService {
         } else {
             this.cartProducts.push(new CartProductModel(product));
         }
-        this.productsService.decreaseProduct(product.id);
     }
 
-    delete(productId: string) {
+    delete(productId: number) {
         const currentIndex = this.cartProducts.findIndex(p => p.product.id === productId);
         if (currentIndex > -1) {
             this.cartProducts[currentIndex].count--;
-            this.productsService.increaseProduct(productId);
         }
 
         if (this.cartProducts[currentIndex].count === 0) {

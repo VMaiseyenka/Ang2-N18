@@ -1,6 +1,5 @@
-<div class="product" [ngClass]="{ 'product--disabled': !isAvailable}">
+<div class="product">
     <div class="product__name">{{product.name | titlecase}}</div>
-    <div class="product__category">{{ product.category | uppercase }}</div>
     <div class="product__description">{{product.description}}</div>
     <span class="product__quantity">
         Available: {{product.quantity}}
@@ -8,5 +7,15 @@
     <span class="product__price">
         Price: <span class="product__price-value">{{product.price | currency}}</span>
     </span>
-    <button class="product__btn" (click)="onBuy()" [disabled]="!isAvailable">Buy</button>
 </div>
+
+<div>
+    <button class="product__btn" (click)="onBuy()">Buy</button>
+    <div class="product__btn" (click)="onCommentsShow()">
+        <span *ngIf="!isCommentsShow; then show; else hide"></span>
+        <ng-template #hide>Hide comments</ng-template>
+        <ng-template #show>Show comments</ng-template>
+    </div>
+</div>
+<router-outlet name="product-comments" (activate)='onActivate($event)' (deactivate)='onDeactivate($event)'>
+</router-outlet>

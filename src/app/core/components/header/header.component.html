@@ -1,0 +1,15 @@
+<nav class="nav">
+    <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/products">Catalog</a>
+    </div>
+    <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/cart">Cart</a>
+    </div>
+
+    <div *ngIf="isAdminLoggedIn" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/admin">Admin</a>
+    </div>
+    <div class="nav-item login-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/login">Login</a>
+    </div>
+</nav>

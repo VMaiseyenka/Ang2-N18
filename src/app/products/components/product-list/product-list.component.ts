@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ProductModel } from '../../models';
 import { ProductsService } from '../../services';
-import { CartService } from '../../../cart/services';
+import { CartService } from 'src/app/cart/services';
 
 @Component({
     selector: 'app-product-list',
@@ -29,14 +30,18 @@ export class ProductListComponent implements OnInit {
 
     constructor(
         private productsService: ProductsService,
-        private cartService: CartService) { }
+        private cartService: CartService,
+        private router: Router) { }
 
     ngOnInit() {
         this.products$ = this.productsService.getProducts();
     }
 
+    showDetails(productId: string) {
+        this.router.navigate(['products', productId]);
+    }
+
     onBuy(product: ProductModel) {
         this.cartService.buy(product);
     }
-
 }

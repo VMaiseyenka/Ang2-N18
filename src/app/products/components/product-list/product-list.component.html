@@ -7,6 +7,14 @@
     </form>
 </div>
 
-<app-product *ngFor="let product of (products$ | async | orderBy:sortOrder)" [product]="product"
-    (buy)="onBuy(product)">
-</app-product>
+<ng-container *ngFor="let product of (products$ | async | orderBy:sortOrder)">
+    <div class="product">
+        <div class="product__name">{{product.name | titlecase}}</div>
+        <span class="product__details">
+            Price: <span class="product__price">{{product.price | currency}}</span>;&nbsp;&nbsp;
+            <span class="product__quantity">(only {{product.quantity}} pieces available)</span>
+        </span>
+        <button class="product__btn" (click)="showDetails(product.id)">Details</button>
+        <button class="product__btn" (click)="onBuy(product)">Buy</button>
+    </div>
+</ng-container>

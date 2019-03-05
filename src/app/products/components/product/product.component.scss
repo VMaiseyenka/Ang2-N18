@@ -5,10 +5,6 @@
     border-radius: 4px;
     padding: 16px;
 
-    &--disabled {
-        opacity: 0.5;
-    }
-
     &__name {
         color: black;
         font-size: 24px;
@@ -44,8 +40,8 @@
 
     &__btn {
         float: right;
-        width: 75px;
         padding: 4px;
+        margin: 0 4px;
         box-sizing: border-box;
         color: #ffffff;
         background-color:rgb(124, 124, 219);

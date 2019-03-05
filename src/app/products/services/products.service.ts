@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { ProductModel } from '../models';
-import { ProductCategory } from '../enums';
+import { ProductsHttpService } from 'src/app/core/services';
+import { Product } from 'src/app/core/models';
 
 
 @Injectable({
@@ -9,44 +10,33 @@ import { ProductCategory } from '../enums';
 })
 export class ProductsService {
 
-    products: ProductModel[] = [
-        new ProductModel(
-            '1', 'A Brief History of Time',
-            13.59, ProductCategory.Books,
-            12,
-            'A landmark volume in science writing by one of the great minds of our time, Stephen Hawking’s book...'),
-        new ProductModel(
-            '2', 'A Heartbreaking Work of Staggering Genius',
-            10.84, ProductCategory.Books,
-            20,
-            'A book that redefines both family and narrative for the twenty-first century. A Heartbreaking Work of Staggerin...'),
-        new ProductModel(
-            '3',
-            'Alice`s Adventures in Wonderland & Through the Looking-Glass',
-            5.95, ProductCategory.Books,
-            3,
-            'In 1862 Charles Lutwidge Dodgson, a shy Oxford mathematician with a stammer, created a story about a little girl tumbling...'),
-    ];
-
-    constructor() { }
+    constructor(private productsHttpService: ProductsHttpService) { }
 
     getProducts(): Promise<ProductModel[]> {
-        return new Promise<ProductModel[]>((resolve, reject) => {
-            resolve(this.products);
-        });
+        return this.productsHttpService.get()
+            .then(response => response.map(this.mapToProductModel))
+            .catch(response => Promise.resolve(ProductModel[0]));
     }
 
-    increaseProduct(productId: string) {
-        const currentIndex = this.products.findIndex(p => p.id === productId);
-        if (currentIndex > -1) {
-            this.products[currentIndex].quantity++;
-        }
+    getById(productId: number): Promise<ProductModel> {
+        return this.productsHttpService.getById(productId)
+            .then(response => this.mapToProductModel(response))
+            .catch(response => Promise.resolve<ProductModel>(null));
     }
 
-    decreaseProduct(productId: string) {
-        const currentIndex = this.products.findIndex(p => p.id === productId);
-        if (currentIndex > -1) {
-            this.products[currentIndex].quantity--;
-        }
+    getComments(id: number): Promise<string[]> {
+        return this.productsHttpService.getById(id)
+            .then(response => response.comments)
+            .catch(response => Promise.resolve<string[]>([]));
+    }
+
+    private mapToProductModel(productDto: Product): ProductModel {
+        return new ProductModel(
+            +productDto.id,
+            productDto.name,
+            productDto.price,
+            productDto.count,
+            productDto.description,
+        );
     }
 }

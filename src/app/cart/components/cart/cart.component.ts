@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
         return this.cartService.getTotalPrice();
     }
 
-    deleteProduct(productId: string) {
+    deleteProduct(productId: number) {
         this.cartService.delete(productId);
     }
 

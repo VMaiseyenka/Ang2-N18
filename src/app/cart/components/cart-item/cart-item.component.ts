@@ -10,7 +10,7 @@ import { CartProductModel } from '../../models';
 export class CartItemComponent implements OnInit {
 
   @Input() item: CartProductModel;
-  @Output() delete = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<number>();
 
   constructor() { }
 

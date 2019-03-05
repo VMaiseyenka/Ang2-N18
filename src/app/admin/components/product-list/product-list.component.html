@@ -1,0 +1,11 @@
+<div>
+    <button [routerLink]="['new']"> New Product </button>
+    <ul>
+        <li *ngFor="let product of products$ | async">
+            {{product.name}}
+            <a [routerLink]="['edit/' + product.id]">
+                Edit
+            </a>
+        </li>
+    </ul>
+</div>

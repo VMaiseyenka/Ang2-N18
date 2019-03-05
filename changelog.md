@@ -1,5 +1,15 @@
 <a name="1.4.0"></a>
 
+## 1.5.0 (2019-03-04)
+
+### Added
+ AppRoutingModule
+ ProductsRoutingModule
+ CartRoutingModule
+ Admin functionality
+ Lazy loading of the AdminModule
+
+
 ## 1.4.0 (2019-02-07)
 
 ### Added

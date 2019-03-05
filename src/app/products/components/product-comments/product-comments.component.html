@@ -1,0 +1,9 @@
+<ng-container *ngIf="comments$ | async as result">
+    <span *ngIf="result.length; then show; else hide"></span>
+    <ng-template #show>
+        <ul>
+            <li *ngFor="let item of result">{{item}}</li>
+        </ul>
+    </ng-template>
+    <ng-template #hide>There is no comments</ng-template>
+</ng-container>
