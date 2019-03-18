@@ -19,7 +19,7 @@ export class AppSettingsService {
     getSettings(): Observable<AppSettings> {
         const settings = this.localStorageService.getItem(this.APP_SETTINGS);
         if (settings === null) {
-            this.load()
+            return this.load()
                 .pipe(
                     map(
                         response => {
