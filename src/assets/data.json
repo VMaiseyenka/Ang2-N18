@@ -1,30 +1,32 @@
-[
-    {
-        "id": 1,
-        "name": "A Brief History of Time",
-        "description": "A landmark volume in science writing by one of the great minds of our time, Stephen Hawking’s book...",
-        "price": 13.59,
-        "count": 12,
-        "comments": [
-            "comment1",
-            "comment2",
-            "comment3"
-        ]
-    },
-    {
-        "id": 2,
-        "name": "A Heartbreaking Work of Staggering Genius",
-        "description": "A book that redefines both family and narrative for the twenty-first century. A Heartbreaking Work of Staggerin...",
-        "price": 10.84,
-        "count": 20,
-        "comments": []
-    },
-    {
-        "id": 3,
-        "name": "Alice`s Adventures in Wonderland & Through the Looking-Glass",
-        "description": "In 1862 Charles Lutwidge Dodgson, a shy Oxford mathematician with a stammer, created a story about a little girl tumbling...",
-        "price": 5.95,
-        "count": 3,
-        "comments": []
-    }
-]
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "A Brief History of Time",
+            "description": "A landmark volume in science writing by one of the great minds of our time, Stephen Hawking’s book...",
+            "price": 13.59,
+            "count": 12,
+            "comments": [
+                "comment1",
+                "comment2",
+                "comment3"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "A Heartbreaking Work of Staggering Genius",
+            "description": "A book that redefines both family and narrative for the twenty-first century. A Heartbreaking Work of Staggerin...",
+            "price": 10.84,
+            "count": 20,
+            "comments": []
+        },
+        {
+            "id": 3,
+            "name": "Alice`s Adventures in Wonderland & Through the Looking-Glass",
+            "description": "In 1862 Charles Lutwidge Dodgson, a shy Oxford mathematician with a stammer, created a story about a little girl tumbling...",
+            "price": 5.95,
+            "count": 3,
+            "comments": []
+        }
+    ]
+}

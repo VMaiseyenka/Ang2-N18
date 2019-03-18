@@ -1,5 +1,14 @@
 <a name="1.4.0"></a>
 
+## 1.6.0 (2019-03-18)
+
+### Added
+ AppSettingsService
+ TimingInterceptor
+
+### Updated
+ ProductsHttpService
+
 ## 1.5.0 (2019-03-04)
 
 ### Added

@@ -14,18 +14,21 @@ export class ProductsService {
 
     getProducts(): Promise<ProductModel[]> {
         return this.productsHttpService.get()
+            .toPromise()
             .then(response => response.map(this.mapToProductModel))
             .catch(response => Promise.resolve(ProductModel[0]));
     }
 
     getById(productId: number): Promise<ProductModel> {
         return this.productsHttpService.getById(productId)
+            .toPromise()
             .then(response => this.mapToProductModel(response))
             .catch(response => Promise.resolve<ProductModel>(null));
     }
 
     getComments(id: number): Promise<string[]> {
         return this.productsHttpService.getById(id)
+            .toPromise()
             .then(response => response.comments)
             .catch(response => Promise.resolve<string[]>([]));
     }
